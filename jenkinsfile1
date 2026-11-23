@@ -1,19 +1,20 @@
 pipeline {
-  agent any
-  environment {
-    PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin;${env.PATH}"
-  }
-  stages {
-    stage('Checkout') {
-      steps { checkout scm }
+    agent any
+
+    environment {
+        PATH = "C:\\Users\\shreya\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin;${env.PATH}"
     }
-    stage('Build Image') {
-      steps { bat 'docker build -t grade .' }
+
+    stages {
+        stage('Build Image') {
+            steps {
+                bat 'docker build -t grade .'
+            }
+        }
+        stage('Run Container') {
+            steps {
+                bat 'docker run grade'
+            }
+        }
     }
-    stage('Run Container') {
-      steps {
-        bat '(echo 3& echo 90& echo 95& echo 80) | docker run -i grade'
-      }
-    }
-  }
 }
