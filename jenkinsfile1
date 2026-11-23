@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Run Container') {
             steps {
-                bat '(echo 3 & echo 80 & echo 70 &/ echo 90)
+                bat '(echo 3 & echo 80 & echo 70 & echo 90) | docker run -i grade'
             }
         }
     }
