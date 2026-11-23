@@ -1,0 +1,16 @@
+pipeline {
+  agent any
+  stages {
+    stage('Checkout') {
+      steps { checkout scm }
+    }
+    stage('Build Image') {
+      steps { bat 'docker build -t grade .' }
+    }
+    stage('Run Container') {
+      steps {
+        bat '(echo 3& echo 90& echo 95& echo 80) | docker run -i grade'
+      }
+    }
+  }
+}

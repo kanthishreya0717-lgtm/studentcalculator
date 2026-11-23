@@ -14,6 +14,7 @@ def grade(avg):
         return "F"
 
 def is_pass(marks):
+    
     return all(mark >= 40 for mark in marks)
 
 marks = []
